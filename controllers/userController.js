@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 //user registration
-// route -GET /api/users/register
+// route - Post /api/users/register
 //public
 const registerUser = ayncHandler(async (req, res) => {
   const { username, email, password } = req.body;
@@ -29,7 +29,7 @@ const registerUser = ayncHandler(async (req, res) => {
 });
 
 //login user
-// route -GET /api/users/login
+// route -POST /api/users/login
 //public
 const loginUser = ayncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -54,7 +54,7 @@ const loginUser = ayncHandler(async (req, res) => {
     res.status(200).json({ accessToken });
   } else {
     res.status(401);
-    throw new Error("email or password not matched");
+    throw new Error("Email or password not matched!!!");
   }
 });
 

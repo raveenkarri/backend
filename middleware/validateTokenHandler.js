@@ -1,4 +1,3 @@
-const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 
 const validateToken = (req, res, next) => {
@@ -11,7 +10,7 @@ const validateToken = (req, res, next) => {
         res.status(401);
         throw new Error("Error");
       }
-      // console.log(decode);
+      console.log(decode);
       req.user = decode.user;
       next();
     });
