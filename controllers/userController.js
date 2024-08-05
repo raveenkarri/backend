@@ -40,6 +40,15 @@ const loginUser = ayncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (user && (await bcrypt.compare(password, user.password))) {
+    // decode = {
+    //   user: {
+    //     username: user.username,
+    //     email: user.email,
+    //     id: user.id,
+    //   },
+    // };
+    // this is payload we passing to the verifyToken fuction
+
     const accessToken = jwt.sign(
       {
         user: {
@@ -60,7 +69,7 @@ const loginUser = ayncHandler(async (req, res) => {
 
 //get user
 // route -GET /api/users/:id
-//public
+//private
 const getUser = ayncHandler(async (req, res) => {
   res.json(req.user);
 });
